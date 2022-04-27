@@ -4,6 +4,21 @@ import chordCard from './chordCard';
 
 export default function Chords() {
   const [chords, setChords] = useState([]);
+  const [filteredChords, setFilteredChords] = useState([]);
+  const [filterInput, setFilterInput] = useState('');
+
+  const handleChange = (e) => {
+    setFilterInput(e.target.value);
+  };
+
+  useEffect(() => {
+    const filterResults = chords.filter((chord) => {
+      return chord.chordName
+        .toLowerCase()
+        .includes(filterInput.toLowerCase().trim());
+    });
+    setFilteredChords(filterResults);
+  }, [filterInput]);
 
   useEffect(() => {
     const asyncFunc = async () => {
@@ -16,17 +31,25 @@ export default function Chords() {
     asyncFunc();
   }, []);
   console.log(chords);
-  return (
-    <div className={styles['container']}>
-      <input />
 
-      {chords ? (
-        chords.map((chord, index) => {
-          return chordCard(chord, index);
-        })
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
+  const ChordList = filteredChords.length > 0 ? filteredChords : chords;
+  return (
+    <>
+      <input
+        className={styles['input']}
+        placeholder="Filter Chords Here"
+        onChange={(e) => handleChange(e)}
+        value={filterInput}
+      />
+      <div className={styles['container']}>
+        {ChordList ? (
+          ChordList.map((chord, index) => {
+            return chordCard(chord, index);
+          })
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
+    </>
   );
 }
