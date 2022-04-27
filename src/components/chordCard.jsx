@@ -5,7 +5,6 @@ import styles from '../styles/ChordDetail.css';
 
 const chordCard = (chord, index) => {
   chord.chordName = chord.chordName.split(',').join('');
-  console.log('IM IN THE CHORD CARD', chord);
   return (
     <div key={index + 'chord'} className={chordStyles['chords']}>
       <Link
@@ -20,7 +19,7 @@ const chordCard = (chord, index) => {
       <img
         className={styles['chord-img']}
         src={`../${chord.chordName}-chord.png`}
-        alt={`Image of an ${chord} chord`}
+        alt={`Image of an ${chord.chordName} chord`}
       ></img>
     </div>
   );

@@ -18,6 +18,8 @@ export default function Chords() {
   console.log(chords);
   return (
     <div className={styles['container']}>
+      <input />
+
       {chords ? (
         chords.map((chord, index) => {
           return chordCard(chord, index);
