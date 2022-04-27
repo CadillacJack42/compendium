@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../styles/Chords.css';
-import { Link } from 'react-router-dom';
 import chordCard from './chordCard';
 
 export default function Chords() {
