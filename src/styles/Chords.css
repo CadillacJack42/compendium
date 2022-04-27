@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.chords {
+    margin: 3px;
+    text-align: center;
+    border: 1px solid black;
+    width: 30%;
+
+}
