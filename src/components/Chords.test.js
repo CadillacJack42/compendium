@@ -1,4 +1,9 @@
-import { render, screen } from '@testing-library/react';
+import {
+  render,
+  screen,
+  waitFor,
+  waitForElementToBeRemoved,
+} from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import Chords from './Chords';
@@ -23,7 +28,30 @@ describe('Chords Component testing', () => {
     expect(Bimg).toHaveClass('chord-img');
     const Cimg = await screen.findByAltText('Image of an C chord');
     expect(Cimg).toHaveClass('chord-img');
+  });
 
-    const searchInput = screen.getByPlaceholderText('Filter Chords Here');
+  it('Should trigger the filter function', async () => {
+    render(
+      <MemoryRouter>
+        <Chords />
+      </MemoryRouter>
+    );
+
+    await waitForElementToBeRemoved(screen.getByText(/loading/i));
+
+    const searchInput = await screen.findByPlaceholderText(
+      'Filter Chords Here'
+    );
+
+    userEvent.type(searchInput, 'ab');
+
+    const chordArrayContainer = await screen.findByLabelText(
+      'chords-container'
+    );
+
+    expect(await screen.findByText('Ab')).toBeInTheDocument();
+
+    const chords = screen.getAllByRole('link');
+    expect(chords).toHaveLength(1);
   });
 });

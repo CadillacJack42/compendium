@@ -9,7 +9,17 @@ export default function Chords() {
 
   const handleChange = (e) => {
     setFilterInput(e.target.value);
+    // checkFunc();
   };
+
+  // const checkFunc = () => {
+  //   const filterResults = chords.filter((chord) => {
+  //     return chord.chordName
+  //       .toLowerCase()
+  //       .includes(filterInput.toLowerCase().trim());
+  //   });
+  //   setFilteredChords(filterResults);
+  // };
 
   useEffect(() => {
     const filterResults = chords.filter((chord) => {
@@ -41,8 +51,8 @@ export default function Chords() {
         onChange={(e) => handleChange(e)}
         value={filterInput}
       />
-      <div className={styles['container']}>
-        {ChordList ? (
+      <div className={styles['container']} aria-label="chords-container">
+        {ChordList.length ? (
           ChordList.map((chord, index) => {
             return chordCard(chord, index);
           })

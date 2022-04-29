@@ -27,8 +27,6 @@ describe('Chord Detail View Testing', () => {
         <ChordDetail />
       </MemoryRouter>
     );
-    screen.debug();
-
     const chordNameHeader = await screen.findByRole('heading');
     expect(chordNameHeader).toHaveTextContent('Chord Name B');
 

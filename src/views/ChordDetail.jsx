@@ -1,11 +1,9 @@
 import React from 'react';
 import styles from '../styles/ChordDetail.css';
-import { useParams, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 export default function ChordDetail() {
-  //   const { chord } = useParams();
   const location = useLocation();
-  console.log(location.state);
   const chord = location.state.chord;
   return (
     <div className={styles['detail-display']}>
