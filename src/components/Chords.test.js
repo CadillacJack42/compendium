@@ -23,5 +23,7 @@ describe('Chords Component testing', () => {
     expect(Bimg).toHaveClass('chord-img');
     const Cimg = await screen.findByAltText('Image of an C chord');
     expect(Cimg).toHaveClass('chord-img');
+
+    const searchInput = screen.getByPlaceholderText('Filter Chords Here');
   });
 });

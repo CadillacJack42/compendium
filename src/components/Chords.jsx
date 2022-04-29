@@ -30,7 +30,7 @@ export default function Chords() {
     };
     asyncFunc();
   }, []);
-  console.log(chords);
+  // console.log(chords);
 
   const ChordList = filteredChords.length > 0 ? filteredChords : chords;
   return (
