@@ -9,17 +9,7 @@ export default function Chords() {
 
   const handleChange = (e) => {
     setFilterInput(e.target.value);
-    // checkFunc();
   };
-
-  // const checkFunc = () => {
-  //   const filterResults = chords.filter((chord) => {
-  //     return chord.chordName
-  //       .toLowerCase()
-  //       .includes(filterInput.toLowerCase().trim());
-  //   });
-  //   setFilteredChords(filterResults);
-  // };
 
   useEffect(() => {
     const filterResults = chords.filter((chord) => {
@@ -40,7 +30,6 @@ export default function Chords() {
     };
     asyncFunc();
   }, []);
-  // console.log(chords);
 
   const ChordList = filteredChords.length > 0 ? filteredChords : chords;
   return (
