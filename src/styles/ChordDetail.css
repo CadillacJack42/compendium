@@ -1,0 +1,10 @@
+.chord-img {
+    width: 150px;
+}
+
+.detail-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
